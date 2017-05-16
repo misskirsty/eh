@@ -1,0 +1,33 @@
+
+function love.load()
+	circle ={{100,(math.random()*100 + 200)},
+						{120,(math.random()*100 + 200)}
+					}
+	love.window.setMode(400, 400, {resizable=false,vsync=false})
+	width = 160
+	height = 100
+	radius = 15
+	velocity = 0.1
+	circle.x = 200
+	circle.y = 100
+end
+
+
+function love.draw()
+	love.graphics.setColor( 23,  100,200)
+	love.graphics.setBackgroundColor( 30, 144, 255 )
+	love.graphics.circle('fill', circle.x, circle.y, radius)
+
+end
+
+function love.update(t)
+	for i,cir in pairs(circle) do
+		print(circle[cir])
+	end
+
+	velocity = velocity + 1 * t
+	circle.y = circle.y + velocity
+	if circle.y >= 400 - radius then
+		velocity = (-1) * velocity
+	end
+end
